@@ -17,7 +17,6 @@ function AuthForm() {
       return;
     }
     login();
-    // Redirección manejada por AuthContext
   };
 
   return (
