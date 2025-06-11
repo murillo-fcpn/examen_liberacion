@@ -3,7 +3,8 @@ import { useAuth } from '../context/AuthContext.tsx';
 import '../styles/dashboard.css';
 
 function Header() {
-  const { isAuthenticated } = useAuth();
+  const auth = useAuth();
+  const isAuthenticated = auth?.isAuthenticated;
 
   return (
     <header className="dashboard-header">

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Importa Link
-import { useAuth } from '../context/AuthContext.tsx';
+import { useAuth } from '../context/AuthContext'; // Asegúrate de que la ruta sea correcta
 import '../styles/index.css';
 
 function AuthForm() {
   const [username, setUsername] = useState<string>(''); // Anotación de tipo
   const [password, setPassword] = useState<string>(''); // Anotación de tipo
   const [error, setError] = useState<string>(''); // Anotación de tipo
-  const { login } = useAuth();
+  const auth = useAuth();
+  const login = auth?.login;
 
   const handleSubmit = (e: React.FormEvent) => { // Anotación de tipo para el evento de formulario
     e.preventDefault();
@@ -16,7 +17,13 @@ function AuthForm() {
       setError('Por favor, ingresa usuario y contraseña.');
       return;
     }
-    login();
+    if (login) {
+      login?.(username, password).catch(() => {
+        setError('Error al iniciar sesión.');
+      });
+    } else {
+      setError('No se pudo acceder al contexto de autenticación.');
+    }
   };
 
   return (

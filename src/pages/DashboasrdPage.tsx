@@ -7,9 +7,11 @@ import Header from "../components/Header";
 import MoviesPage from "./MoviesPage";
 import SeriesPage from "./SeriesPage";
 import ProfilePage from "./ProfilePage";
+import LatestPage from "./LatestPage";
+import CollectionsPage from "./CollectionsPage";
 
 function DashboardPage() {
-    return (
+  return (
     <div className="dashboard-layout">
       <Sidebar />
       <div className="dashboard-content">
@@ -20,6 +22,8 @@ function DashboardPage() {
             <Route path="movies" element={<MoviesPage />} />
             <Route path="series" element={<SeriesPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="latest" element={<LatestPage />} />
+            <Route path="collections" element={<CollectionsPage />} />
           </Routes>
         </main>
       </div>
@@ -27,4 +31,4 @@ function DashboardPage() {
   );
 }
 
-export default DashboardPage
+export default DashboardPage;
